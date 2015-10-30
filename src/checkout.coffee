@@ -37,5 +37,5 @@ module.exports = (robot) ->
     else if resourceUser is username
       robot.brain.remove('resource-' + resourceName)
       res.reply " returned " + resourceName
-    else 
-      res.reply ", " + resourceName + " is checked out by " resourceUser + "." 
+    else
+      res.reply ", " + resourceName + " is checked out by " + resourceUser + "."
