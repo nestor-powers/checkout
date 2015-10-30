@@ -19,7 +19,7 @@ module.exports = (robot) ->
   robot.respond /hello/, (res) ->
     res.reply "hi from checkout!"
 
-  robot.respond /checkout (.*)/, (res) ->
+  robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resource = robot.brain.get('resource-' + resourceName)
@@ -30,8 +30,7 @@ module.exports = (robot) ->
     else
       res.reply "Seems like " + resourceName + " is already checked out by " + resource + "."
 
-
-  robot.respond /return (.*)/, (res) ->
+  robot.respond /return (.*)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resource = robot.brain.get('resource-' + resourceName)
