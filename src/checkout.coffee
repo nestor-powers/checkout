@@ -24,7 +24,7 @@ module.exports = (robot) ->
     resourceName = res.match[1]
     resource = robot.brain.get('resource-' + resourceName)
 
-    if resource?
+    if resource == null
       robot.brain.set('resource-' + resourceName, username)
       res.reply username + "checked out " + resourceName
     else
@@ -35,7 +35,7 @@ module.exports = (robot) ->
     resourceName = res.match[1]
     resource = robot.brain.get('resource-' + resourceName)
 
-    if resource?
+    if resource == null
       res.reply username + " returned " + resourceName
     else
       robot.brain.remove('resource-' + resourceName)
