@@ -32,7 +32,7 @@ module.exports = (robot) ->
     resourceName = res.match[1]
     resourceUser = robot.brain.get('resource-' + resourceName)
 
-    if resource == null
+    if resourceUser == null
       res.reply " returned " + resourceName
     else if resourceUser is username
       robot.brain.remove('resource-' + resourceName)
