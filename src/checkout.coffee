@@ -5,7 +5,6 @@
 #   LIST_OF_ENV_VARS_TO_SET
 #
 # Commands:
-#   hubot hello - <what the respond trigger does>
 #   hubot checkout - <checkout a resource>
 #   hubot return - <return a resource>
 #
@@ -16,28 +15,27 @@
 #   deekim <todankim@gmail.com>
 
 module.exports = (robot) ->
-  robot.respond /hello/, (res) ->
-    res.reply "hi from checkout!"
 
   robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
-    resource = robot.brain.get('resource-' + resourceName)
+    resourceUser = robot.brain.get('resource-' + resourceName)
 
-    if resource == null
+    if resourceUser == null
       robot.brain.set('resource-' + resourceName, username)
-      res.reply username + "checked out " + resourceName
+      res.reply " checked out " + resourceName
     else
-      res.reply "Seems like " + resourceName + " is already checked out by " + resource + "."
+      res.reply "Seems like " + resourceName + " is already checked out by " + resourceUser + "."
 
   robot.respond /return (.*)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
-    resource = robot.brain.get('resource-' + resourceName)
+    resourceUser = robot.brain.get('resource-' + resourceName)
 
     if resource == null
-      res.reply username + " returned " + resourceName
-    else
+      res.reply " returned " + resourceName
+    else if resourceUser is username
       robot.brain.remove('resource-' + resourceName)
-      res.reply username + " returned " + resourceName
-  
+      res.reply " returned " + resourceName
+    else 
+      res.reply ", " + resourceName + " is checked out by " resourceUser + "." 
