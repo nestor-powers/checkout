@@ -6,7 +6,8 @@
 #
 # Commands:
 #   hubot hello - <what the respond trigger does>
-#   orly - <what the hear trigger does>
+#   hubot checkout - <checkout a resource>
+#   hubot return - <return a resource>
 #
 # Notes:
 #   <optional notes required for the script>
@@ -16,7 +17,28 @@
 
 module.exports = (robot) ->
   robot.respond /hello/, (res) ->
-    res.reply "hello!"
+    res.reply "hi from checkout!"
 
-  robot.hear /orly/, ->
-    res.send "yarly"
+  robot.respond /checkout (.*)/, (res) ->
+    username = res.message.user.name
+    resourceName = res.match[1]
+    resource = robot.brain.get('resource-' + resourceName)
+
+    if resource === null
+      robot.brain.set('resource-' + resourceName, username)
+      res.reply username + "checked out " + resourceName
+    else
+      res.reply "Seems like " + resourceName + " is already checked out by " + resource + "."
+
+
+  robot.respond /return (.*)/, (res) ->
+    username = res.message.user.name
+    resourceName = res.match[1]
+    resource = robot.brain.get('resource-' + resourceName)
+
+    if resource === null
+      res.reply username + " returned " + resourceName
+    else
+      robot.brain.remove('resource-' + resourceName)
+      res.reply username + " returned " + resourceName
+  
