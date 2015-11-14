@@ -7,7 +7,7 @@
 # Commands:
 #   hubot checkout <resource> - checks out <resource>
 #   hubot return <resource> - returns <resource>
-#   hubot return --force <resource> - forcefully returns <resource>
+#   hubot return <resource> --force - forcefully returns <resource>
 #   hubot list resources - lists information about checked out resources
 #
 # Notes:
@@ -48,20 +48,20 @@ module.exports = (robot) ->
     resourceUser = robot.brain.get('resource-' + resourceName)
 
     if resourceUser == null
-      res.reply ", " + resourceName + "does not appear to be checked out"
+      res.reply ", " + resourceName + " does not appear to be checked out"
     else if resourceUser is username
       robot.brain.remove('resource-' + resourceName)
       res.reply "returned " + resourceName
     else
       res.reply ", " + resourceName + " is checked out by " + resourceUser + "."
 
-  robot.respond /return --force (.*)/i, (res) ->
+  robot.respond /return (.*) --force/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resourceUser = robot.brain.get('resource-' + resourceName)
 
     if resourceUser == null
-      res.reply ", " + resourceName + "does not appear to be checked out"
+      res.reply ", " + resourceName + " does not appear to be checked out"
     else
       robot.brain.remove('resource-' + resourceName)
       res.reply "forcefully returned " + resourceName
