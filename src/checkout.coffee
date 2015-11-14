@@ -26,7 +26,9 @@ module.exports = (robot) ->
     for key, value of data
       resource = resourceMatch.exec key
       if resource != null
-        response += "'#{resource[1]}' is checked out by #{value}"
+        response += "'#{resource[1]}' was checked out by #{value}\n"
+
+    res.reply response
 
   robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
