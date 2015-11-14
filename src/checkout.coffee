@@ -17,12 +17,16 @@
 
 module.exports = (robot) ->
 
+  var resourceMatch = /^resource-(.*)$/i;
+
   robot.respond /resource list/i, (res) ->
-    console.log robot.brain.data._private
     data = robot.brain.data._private
     
+    response = "The following resource(s) are checked out: \n"
     for key, value of data
-      console.log key + ': ' + value
+      resource = resourceMatch.exec key
+      console.log resource
+      response += "#{key} is checked out by #{value}"
 
   robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
