@@ -17,7 +17,7 @@
 
 module.exports = (robot) ->
 
-  var resourceMatch = /^resource-(.*)$/i;
+  resourceMatch = /^resource-(.*)$/i)
 
   robot.respond /resource list/i, (res) ->
     data = robot.brain.data._private
