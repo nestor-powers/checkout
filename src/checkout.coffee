@@ -18,7 +18,7 @@
 
 module.exports = (robot) ->
 
-  resourceMatch = /^resource-(.*)$/i
+  resourceMatch = /^resource-(.+)$/i
 
   robot.respond /list resources/i, (res) ->
     data = robot.brain.data._private
@@ -31,7 +31,7 @@ module.exports = (robot) ->
 
     res.reply response
 
-  robot.respond /checkout (.*)/i, (res) ->
+  robot.respond /checkout (.+)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resourceUser = robot.brain.get('resource-' + resourceName)
@@ -42,7 +42,7 @@ module.exports = (robot) ->
     else
       res.reply "Seems like " + resourceName + " is already checked out by " + resourceUser + "."
 
-  robot.respond /return (.*)/i, (res) ->
+  robot.respond /return(?! --force) (.+)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resourceUser = robot.brain.get('resource-' + resourceName)
@@ -55,7 +55,7 @@ module.exports = (robot) ->
     else
       res.reply ", " + resourceName + " is checked out by " + resourceUser + "."
 
-  robot.respond /return (.*) --force/i, (res) ->
+  robot.respond /return --force (.+)/i, (res) ->
     username = res.message.user.name
     resourceName = res.match[1]
     resourceUser = robot.brain.get('resource-' + resourceName)
