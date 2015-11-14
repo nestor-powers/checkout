@@ -18,7 +18,11 @@
 module.exports = (robot) ->
 
   robot.respond /resource list/i, (res) ->
-    console.log robot.brain.data
+    console.log robot.brain.data._private
+    data = robot.brain.data._private
+    
+    for key, value of data
+      console.log key + ': ' + value
 
   robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
