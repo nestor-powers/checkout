@@ -22,6 +22,7 @@ Then add **hubot-checkout** to your `external-scripts.json`:
 
 - Auto-return resource after due date (e.g. hubot checkout qa-server for 1 day)
 - clean up code duplication and utilize coffescript string interpolation
+- add unit tests
 
 ## Sample Interaction
 
