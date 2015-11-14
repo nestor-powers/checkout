@@ -1,7 +1,7 @@
 {
   "name": "hubot-checkout",
   "description": "A bot to keep track (checkin and checkout) resources.",
-  "version": "0.0.16",
+  "version": "0.1.0",
   "author": "deekim <todankim@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",
