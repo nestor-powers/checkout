@@ -5,8 +5,9 @@
 #   LIST_OF_ENV_VARS_TO_SET
 #
 # Commands:
-#   hubot checkout - <checkout a resource>
-#   hubot return - <return a resource>
+#   hubot checkout <resource> - checks out <resource>
+#   hubot return <resource> - returns <resource>
+#   hubot resource list - lists checked out resources
 #
 # Notes:
 #   <optional notes required for the script>
@@ -15,6 +16,9 @@
 #   deekim <todankim@gmail.com>
 
 module.exports = (robot) ->
+
+  robot.respond /resource list/i, (res) ->
+    console.log robot.brain.data
 
   robot.respond /checkout (.*)/i, (res) ->
     username = res.message.user.name
