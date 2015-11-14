@@ -7,7 +7,7 @@
 # Commands:
 #   hubot checkout <resource> - checks out <resource>
 #   hubot return <resource> - returns <resource>
-#   hubot resource list - lists checked out resources
+#   hubot list resources - lists information about checked out resources
 #
 # Notes:
 #   <optional notes required for the script>
@@ -19,10 +19,10 @@ module.exports = (robot) ->
 
   resourceMatch = /^resource-(.*)$/i
 
-  robot.respond /resource list/i, (res) ->
+  robot.respond /list resources/i, (res) ->
     data = robot.brain.data._private
     
-    response = "The following resource(s) are checked out: \n"
+    response = ", \nThe following resource(s) are checked out: \n"
     for key, value of data
       resource = resourceMatch.exec key
       if resource != null
