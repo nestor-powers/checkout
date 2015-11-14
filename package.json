@@ -7,10 +7,10 @@
   "keywords": "hubot, hubot-scripts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-checkout.git"
+    "url": "git://github.com/deekin/hubot-checkout.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-checkout/issues"
+    "url": "https://github.com/deekim/hubot-checkout/issues"
   },
   "dependencies": {},
   "peerDependencies": {
