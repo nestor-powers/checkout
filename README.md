@@ -21,7 +21,7 @@ Then add **hubot-checkout** to your `external-scripts.json`:
 ## Todo
 
 - Auto-return resource after due date (e.g. hubot checkout qa-server for 1 day)
-- Add force return functionality (e.g. hubot return qa-server --force)
+- clean up code duplication and utilize coffescript string interpolation
 
 ## Sample Interaction
 
