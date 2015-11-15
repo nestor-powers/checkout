@@ -2,6 +2,9 @@
 
 A bot to keep track (checkin and checkout) resources.
 
+hubot-redis-brain is a dependency.
+-> Uses redis as persistent store.
+
 See [`src/checkout.coffee`](src/checkout.coffee) for full documentation.
 
 ## Installation
