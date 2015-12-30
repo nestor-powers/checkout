@@ -7,7 +7,7 @@
 # Commands:
 #   hubot checkout <resource> - checks out <resource>
 #   hubot return <resource> - returns <resource>
-#   hubot return <resource> --force - forcefully returns <resource>
+#   hubot return --force <resource> - forcefully returns <resource>
 #   hubot list resources - lists information about checked out resources
 #
 # Notes:
