@@ -27,6 +27,7 @@ Then add **hubot-checkout** to your `external-scripts.json`:
 - clean up code duplication and utilize coffescript string interpolation
 - add unit tests
 - trim white space on resource names
+- add feature to filter resources (and have default filter)
 
 ## Sample Interaction
 
