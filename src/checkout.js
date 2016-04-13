@@ -10,7 +10,7 @@ module.exports = function(robot) {
       var value = data[key];
       var resource = resourceMatch.exec(key);
       if (resource !== null) {
-        response += "'" + resource[1] + "' was checked out by " + value + "\n";
+        response += "'" + resource[1] + "' was checked out by <@" + value + ">\n";
         count++;
       }
     }
@@ -46,7 +46,7 @@ module.exports = function(robot) {
       robot.brain.remove('resource-' + resourceName);
       res.reply("<@" + resourceUser + "> returned " + resourceName, done);
     } else {
-      res.reply("'" + resourceName + "' is checked out by " + resourceUser + ".", done);
+      res.reply("'" + resourceName + "' is checked out by <@" + resourceUser + ">.", done);
     }
   });
 
